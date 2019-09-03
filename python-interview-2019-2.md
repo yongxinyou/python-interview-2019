@@ -13,7 +13,9 @@
    答案：
 
    ```
-   
+   [('a',1),('b',2),('c',3),('d',4),(' ',5)]
+   {1: item1, 2: item9}
+   'hllo worl' - 有空字符，{}集合还得去重，所以答案是: 6
    ```
 
 2. 下面的Python代码会输出什么。
@@ -36,7 +38,22 @@
    答案：
 
    ```Python
+   from functions import wraps
    
+   def re_operate(func):
+      max = 10 
+      @wraps(func)
+      def wrapper(*args, **kwargs):
+         result = func(*args, **kwargs)
+         while max > 0:
+            if not result:
+               result = func(*args, **kwargs)
+               max -= 1
+            else:
+               break
+         return result
+      
+      return func
    ```
 
 4. 下面的字典中保存了某些公司今日的股票代码及价格，用一句Python代码从中找出价格最高的股票对应的股票代码，用一句Python代码创建股票价格大于100的股票组成的新字典。
@@ -58,7 +75,8 @@
    答案：
 
    ```Python
-   
+   [x for x in prices.keys() if prices[x] == max(prices.vaules)] 
+   {x:y for x,y in price.items() if y > 100}
    ```
 
 5. 用生成式实现矩阵的转置操作。例如，用`[[1, 2], [3, 4], [5, 6]`表示矩阵$\begin{bmatrix}1 & 2\\\\3 &4\\\\5 & 6\end{bmatrix}$，写一个生成式将其转换成`[[1, 3, 5], [2, 4, 6]]`即$\begin{bmatrix}1 & 3 & 5\\\\2 & 4 & 6\end{bmatrix}$。
@@ -66,7 +84,8 @@
    答案：
 
    ```Python
-   
+   a = [[1, 2], [3, 4], [5, 6]]
+   [[i[0] for i in a], [i[1] for i in a]]
    ```
 
 6. 写一个函数，传入的参数是一个列表（列表中的元素可能也是一个列表），返回该列表最大的嵌套深度，例如：
@@ -82,7 +101,15 @@
    答案：
 
    ```Python
-   
+   def depth(list):
+      str_list = str(list)
+      count = 0
+      for i in str_list[-1::-1]:
+         if i == ']':
+            count += 1
+         elif i == '[':
+            break
+      return count
    ```
 
 7. 写一个函数，实现将输入的长链接转换成短链接，每个长链接对应的短链接必须是独一无二的且每个长链接只应该对应到一个短链接，假设短链接统一以`http://t.cn/`开头。
@@ -102,7 +129,7 @@
     答案：
 
     ```Python
-    
+    import threading
     ```
 
 9. 请阐述Python是如何进行内存管理的。
@@ -110,7 +137,7 @@
     答案：
 
     ```
-    
+    python是主要用引用计数，配合标记清除，分代回收来进行内存管理。引用计数不能处理循环引用，所以要用到标记
     ```
 
 10. 在MySQL数据库中有名为`tb_result`的表如下所示，请写出能查询出如下所示结果的SQL。
@@ -137,7 +164,9 @@
   答案：
 
   ```SQL
-  
+  select rq, count(胜) as  '胜', count(负) as '负'
+  from tb_result
+  group by rq
   ```
 
 11. 列举出你知道的HTTP请求头选项并说明其作用。
@@ -145,6 +174,8 @@
     答案：
 
     ```
+    meta：
+    requests：
     
     ```
 
@@ -161,7 +192,8 @@
     答案：
 
     ```
-    
+    用户输入url，匹配django中的路由，在通过路由进入视图，通过视图操作模型，实现对数据库的crud，以及序列化，验证等一系列操作后
+    返回数据到前端页面，前端页面在显示在浏览器中。
     ```
 
 14. 请阐述HTTPS的工作原理，并说明该协议与HTTP之间的区别。
