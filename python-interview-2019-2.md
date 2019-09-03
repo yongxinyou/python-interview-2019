@@ -75,8 +75,8 @@
    答案：
 
    ```Python
-   [x for x in prices.keys() if prices[x] == max(prices.vaules)] 
-   {x:y for x,y in price.items() if y > 100}
+   [x for x in prices.keys() if prices[x] == max(prices.values)] 
+   {x:y for x,y in prices.items() if y > 100}
    ```
 
 5. 用生成式实现矩阵的转置操作。例如，用`[[1, 2], [3, 4], [5, 6]`表示矩阵$\begin{bmatrix}1 & 2\\\\3 &4\\\\5 & 6\end{bmatrix}$，写一个生成式将其转换成`[[1, 3, 5], [2, 4, 6]]`即$\begin{bmatrix}1 & 3 & 5\\\\2 & 4 & 6\end{bmatrix}$。
