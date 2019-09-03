@@ -75,7 +75,7 @@
    答案：
 
    ```Python
-   [x for x in prices.keys() if prices[x] == max(prices.values)] 
+   [x for x in prices.keys() if prices[x] == max(prices.values())] 
    {x:y for x,y in prices.items() if y > 100}
    ```
 
